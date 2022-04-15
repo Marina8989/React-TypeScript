@@ -1,30 +1,28 @@
-import React, {useState} from 'react';
+import React, {useState, FC} from 'react';
 import {Notes} from './modules/note.module';
 import './App.css';
 
+interface Props {
+  name: string;
+  age: number;
+  email: string
+}
 
-
-function App() {
-  const [notes, setNotes] = useState<Notes[]>([{
-    id: 'one',
-    text: 'This is the text',
-    title: 'Title'
-  }])
-
-  const returnNotes = () => {
-      return notes.map(note => {
-        return (
-          <div key={note.id}>
-            <h4>{note.title}</h4>
-            <h4>{note.text}</h4>
-          </div>
-        )
-      })
-  }
+const Person: FC<Props> = ({name, age, email}) => {
   return (
     <>
-     <h2>test</h2>
-     { returnNotes() }
+    <h1>{name}</h1>
+    <h1>{age}</h1>
+    <h1>{email}</h1>
+    </>
+  )
+}
+
+const App: FC = () => {
+ 
+  return (
+    <>
+    <Person name='Tiffany' age={22} email='tiffany@gmail.com'/>
     </>
   );
 }
