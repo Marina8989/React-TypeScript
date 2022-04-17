@@ -1,9 +1,29 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 
 interface Props {
   name: string;
   age: number
 }
+
+const people = [
+    {
+      name: 'Bertie Yates',
+      age: 29
+    }, 
+    {
+      name: 'Hester Hogan',
+      age: 32
+    },
+    {
+      name: 'Bertie Yates',
+      age: 29
+    }, 
+    {
+      name: 'Hester Hogan',
+      age: 32
+    }
+  ]
+
 
 const Person: FC<Props> = ({name, age}) => {
   return (
@@ -15,17 +35,17 @@ const Person: FC<Props> = ({name, age}) => {
 }
 
 const App: FC = () => {
+  const [value, setValue] = useState(people)
   return (
-    <>
-      <h5>5 birtdays today</h5>
+     <>
+      <h5>{value.length} birtdays today</h5>
       <ol>
-        <li><Person name='Bertie Yates' age={29}/></li>
-        <li><Person name='Hester Hogan' age={32}/></li>
-        <li><Person name='Larry Little' age={36}/></li>
-        <li><Person name='Sean Walsh' age={34}/></li>
-        <li><Person name='Lola Gardner' age={29}/></li>
+        {value.map(item => <li>
+          <h5>{item.name}</h5>
+          <h4>{item.age}</h4>
+          </li>)}
       </ol>
-    </>
+      </>  
   );
 }
 
