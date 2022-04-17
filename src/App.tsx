@@ -1,11 +1,30 @@
 import React, {FC} from 'react';
-import Person from './Person';
-import {HairColor} from './modules/note.module';
+
+interface Props {
+  name: string;
+  age: number
+}
+
+const Person: FC<Props> = ({name, age}) => {
+  return (
+    <>
+     <h3>{name}</h3>
+     <h4>{age} years old</h4>
+    </>
+  )
+}
 
 const App: FC = () => {
   return (
     <>
-    <Person name='Tiffany' age={22} email='tiffany@gmail.com' hairColor={HairColor.Pink}/>
+      <h5>5 birtdays today</h5>
+      <ol>
+        <li><Person name='Bertie Yates' age={29}/></li>
+        <li><Person name='Hester Hogan' age={32}/></li>
+        <li><Person name='Larry Little' age={36}/></li>
+        <li><Person name='Sean Walsh' age={34}/></li>
+        <li><Person name='Lola Gardner' age={29}/></li>
+      </ol>
     </>
   );
 }
